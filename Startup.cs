@@ -15,6 +15,8 @@ namespace MyAngularMaterialApi
 {
     public class Startup
     {
+
+        readonly string originsPolicty = "originsPolicty";
         public Startup(IConfiguration configuration)
         {
             Configuration = configuration;
@@ -25,11 +27,20 @@ namespace MyAngularMaterialApi
         public void ConfigureServices(IServiceCollection services)
         {
             services.AddControllers();
+            services.AddCors(options =>
+            {
+                options.AddPolicy(originsPolicty,
+                builder =>
+                {
+                    builder.AllowAnyOrigin().AllowAnyHeader().AllowAnyMethod();
+                });
+            });
+            
         }
 
         public void Configure(IApplicationBuilder app, IWebHostEnvironment env)
         {        
-
+            app.UseCors(originsPolicty); 
             app.UseRouting();
 
             app.UseAuthorization();
