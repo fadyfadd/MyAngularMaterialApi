@@ -11,14 +11,12 @@ namespace MyAngularMaterialApi.Controllers
     [Route("[controller]")]
     public class DataProviderController : ControllerBase
     {
-       
- 
         public DataProviderController()
         {
              
         }
         
-        [HttpGet("list")]
+        [HttpGet("processes-list")]
         public IEnumerable<Process> GetProcesses()
         {
             var list = System.Diagnostics.Process.GetProcesses().Select(a => 
