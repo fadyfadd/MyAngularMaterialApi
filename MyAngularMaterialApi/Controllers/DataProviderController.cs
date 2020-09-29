@@ -16,7 +16,7 @@ namespace MyAngularMaterialApi.Controllers
              
         }
         
-        [HttpGet("processes-list")]
+        [HttpGet("process-list")]
         public IEnumerable<Process> GetProcesses()
         {
             var list = System.Diagnostics.Process.GetProcesses().Select(a => 
